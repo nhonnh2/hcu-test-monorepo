@@ -4,7 +4,7 @@ import axios from 'axios';
 // ----------------------------------------------------------------------
 
 export const axiosInstance = axios.create({
-  baseURL: process.env.PUBLIC_API_ENDPOINT,
+  baseURL: 'https://60edd7b0eb4c0a0017bf4260.mockapi.io',
 });
 
 axiosInstance.interceptors.response.use(

@@ -1,5 +1,8 @@
 import { axiosInstance } from '@hcu-test-monorepo/utils';
-import { TaskBodyType } from '@task-management/models/task.model';
+import {
+  TaskBodyType,
+  TaskDetailType,
+} from '@task-management/models/task.model';
 
 const taskApi = {
   getListTask: () => axiosInstance.get('/tasks'),

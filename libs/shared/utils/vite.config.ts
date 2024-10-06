@@ -13,7 +13,9 @@ export default defineConfig({
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
   // },
-
+  define: {
+    'process.env': process.env,
+  },
   test: {
     watch: false,
     globals: true,

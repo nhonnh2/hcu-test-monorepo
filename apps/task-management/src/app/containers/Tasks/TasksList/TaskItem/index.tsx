@@ -1,7 +1,7 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { TaskDetailType } from '../../../models/task.model';
+import { TaskDetailType } from '@task-management/models/task.model';
 
 interface TaskItemProps {
   data: TaskDetailType;
@@ -15,11 +15,14 @@ const TaskItem = ({ data }: TaskItemProps) => {
         <button className="text-gray-400 mr-1">
           <DeleteIcon fontSize="small" />
         </button>
-        <button className="text-green-500">
-          {data.status === 'todo' ? (
-            <CheckCircleOutlineIcon fontSize="small" />
+        <button>
+          {data.status !== 'completed' ? (
+            <CheckCircleOutlineIcon
+              fontSize="small"
+              className="text-gray-400"
+            />
           ) : (
-            <CheckCircleIcon fontSize="small" />
+            <CheckCircleIcon fontSize="small" className="text-green-500" />
           )}
         </button>
       </div>

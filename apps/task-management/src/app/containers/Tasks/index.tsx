@@ -1,6 +1,6 @@
 import { GeneralTextField } from '@hcu-test-monorepo/shared-ui';
 
-import TaskItem from './TaskItem';
+import TasksList from './TasksList';
 import TaskBanner from '@task-management/assets/images/task_banner.png';
 
 import { TaskDetailType } from '@task-management/models/task.model';
@@ -38,25 +38,7 @@ const Tasks = (props: Props) => {
             <h2>My Tasks</h2>
             <p>{new Date().toLocaleDateString()}</p>
           </div>
-          <div className="my_tasks_add d-flex justify-content-between gap-3">
-            <GeneralTextField
-              className="w-full h-11"
-              placeholder="Enter a new task"
-            />
-            <button
-              onClick={addTask}
-              className="bg-pink-600 text-white rounded-full w-20 h-10"
-            >
-              Add +
-            </button>
-          </div>
-          <div className="my_tasks_todo">
-            <ul className="my_tasks_todo_list">
-              {tasks.map((task) => (
-                <TaskItem key={task.id} data={task} />
-              ))}
-            </ul>
-          </div>
+          <TasksList />
         </div>
       </div>
     </div>
