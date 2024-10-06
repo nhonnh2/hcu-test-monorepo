@@ -1,13 +1,16 @@
 import { useState } from 'react';
-import { Alert } from '@mui/material';
+import { Alert, CircularProgress, Button } from '@mui/material'; // Thêm Button từ MUI
 import { GeneralTextField } from '@hcu-test-monorepo/shared-ui';
+import { Add } from '@mui/icons-material'; // Thêm biểu tượng Add từ MUI
 
-import { TaskBodyType } from '@task-management/models/task.model';
+import taskApi from '@task-management/apis/taskApi';
+import { TaskDetailType } from '@task-management/models/task.model';
 
-type AddTaskProps = { addTask: (task: TaskBodyType) => void };
+type AddTaskProps = { addTask: (task: TaskDetailType) => void };
 
 const AddTask = ({ addTask }: AddTaskProps) => {
   const [nameTask, setNameTask] = useState<string>('');
+  const [loadingSubmit, setLoadingSubmit] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
 
   const handleAddTask = () => {
@@ -15,7 +18,18 @@ const AddTask = ({ addTask }: AddTaskProps) => {
       setError('Task name is required');
       return;
     }
-    addTask({ name: nameTask, status: 'todo' });
+    setLoadingSubmit(true);
+    taskApi
+      .addTask({ name: nameTask, status: 'todo' })
+      .then((res) => {
+        addTask(res.data);
+      })
+      .catch((err) => {
+        console.error('addTask__error', err);
+      })
+      .finally(() => {
+        setLoadingSubmit(false);
+      });
   };
 
   const handleChangeTask = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,12 +46,16 @@ const AddTask = ({ addTask }: AddTaskProps) => {
           value={nameTask}
           onChange={handleChangeTask}
         />
-        <button
+
+        <Button
           onClick={handleAddTask}
-          className="bg-pink-600 text-white rounded-full w-20 h-10"
+          variant="contained"
+          color="primary"
+          className="!w-10 !h-10 !rounded-full"
+          disabled={loadingSubmit}
         >
-          Add +
-        </button>
+          {loadingSubmit ? <CircularProgress size={24} /> : <Add />}
+        </Button>
       </div>
       {error && (
         <Alert severity="error" className="mb-3">

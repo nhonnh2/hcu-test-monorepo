@@ -1,38 +1,33 @@
+import CircularProgress from '@mui/material/CircularProgress';
+
 import AddTask from './AddTask';
 import TaskItem from './TaskItem';
 
-import useTasksServices from '../hooks/useTasksServices';
+import useTasks from '../hooks/useTasks';
 
-import { TaskDetailType } from '@task-management/models/task.model';
-// const tasks: TaskDetailType[] = [
-//   {
-//     id: '1',
-//     name: 'Task 1',
-//     status: 'todo',
-//   },
-//   {
-//     id: '2',
-//     name: 'Task 3',
-//     status: 'todo',
-//   },
-// ];
 const TasksList = () => {
-  const { tasks, addTask, updateTask, deleteTask } = useTasksServices();
+  const { tasks, isLoading, addTask, updateTask, deleteTask } = useTasks();
 
   return (
     <>
       <AddTask addTask={addTask} />
       <div className="my_tasks_todo">
-        <ul className="my_tasks_todo_list">
-          {tasks.map((task) => (
-            <TaskItem
-              key={task.id}
-              data={task}
-              updateTask={updateTask}
-              deleteTask={deleteTask}
-            />
-          ))}
-        </ul>
+        {isLoading ? (
+          <div className="flex justify-center items-center">
+            <CircularProgress />
+          </div>
+        ) : (
+          <ul className="my_tasks_todo_list">
+            {tasks.map((task) => (
+              <TaskItem
+                key={task.id}
+                data={task}
+                updateTask={updateTask}
+                deleteTask={deleteTask}
+              />
+            ))}
+          </ul>
+        )}
       </div>
     </>
   );
