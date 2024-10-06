@@ -16,7 +16,9 @@
     "baseUrl": ".",
     "paths": {
       "@hcu-test-monorepo/shared-ui": ["libs/shared/ui/src/index.ts"],
-      "@hcu-test-monorepo/utils": ["libs/shared/utils/src/index.ts"]
+      "@hcu-test-monorepo/utils": ["libs/shared/utils/src/index.ts"],
+      "@task-management/models/*": ["apps/task-management/src/app/models/*"],
+      "@task-management/assets/*": ["apps/task-management/src/assets/*"]
     }
   },
   "exclude": ["node_modules", "tmp"]

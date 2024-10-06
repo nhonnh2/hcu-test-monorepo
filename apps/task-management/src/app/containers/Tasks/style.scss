@@ -1,0 +1,30 @@
+.my_tasks_container {
+  @apply mx-auto bg-gray-100 shadow-lg overflow-hidden;
+  margin: 50px auto;
+  width: 400px;
+  .my_tasks_header {
+    @apply relative overflow-hidden;
+    height: 215px;
+    img {
+      @apply w-full;
+    }
+  }
+  .my_tasks_body {
+    @apply relative;
+    .my_tasks_add {
+      @apply flex items-center justify-between;
+      margin: 20px 0;
+    }
+    .my_tasks_content {
+      @apply p-5;
+    }
+    .my_tasks_title {
+      h2 {
+        @apply text-2xl font-bold;
+      }
+      p {
+        @apply text-sm;
+      }
+    }
+  }
+}

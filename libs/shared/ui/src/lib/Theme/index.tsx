@@ -2,14 +2,15 @@ import React from 'react';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material/styles';
 import { CssBaseline } from '@mui/material';
+import GlobalStyles from './globalStyles';
 
 export const theme = createTheme({
   palette: {
     primary: {
-      main: '#1976d2',
+      main: '#db2777',
     },
     secondary: {
-      main: '#dc004e',
+      main: '#de396399',
     },
   },
 });
@@ -20,6 +21,7 @@ export const GlobalLayout: React.FC<{ children: React.ReactNode }> = ({
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <GlobalStyles />
       {children}
     </ThemeProvider>
   );

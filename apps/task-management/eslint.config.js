@@ -7,6 +7,20 @@ module.exports = [
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     // Override or add rules here
-    rules: {},
+    // rules: {
+    //   '@nrwl/nx/enforce-module-boundaries': [
+    //     'error',
+    //     {
+    //       enforceBuildableLibDependency: true,
+    //       allow: [],
+    //       depConstraints: [
+    //         {
+    //           sourceTag: '*',
+    //           onlyDependOnLibsWithTags: ['*'],
+    //         },
+    //       ],
+    //     },
+    //   ],
+    // },
   },
 ];
