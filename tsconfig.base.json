@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@hcu-test-monorepo/shared-ui": ["libs/shared/ui/src/index.ts"]
+      "@hcu-test-monorepo/shared-ui": ["libs/shared/ui/src/index.ts"],
+      "@hcu-test-monorepo/utils": ["libs/shared/utils/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
