@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // ----------------------------------------------------------------------
 
-const axiosInstance = axios.create({
+export const axiosInstance = axios.create({
   baseURL: process.env.PUBLIC_API_ENDPOINT,
 });
 
@@ -14,5 +14,3 @@ axiosInstance.interceptors.response.use(
       (error.response && error.response.data) || 'Something went wrong'
     )
 );
-
-export default axiosInstance;
