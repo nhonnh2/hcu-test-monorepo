@@ -1,10 +1,10 @@
 import NxWelcome from './nx-welcome';
-
+import { GlobalLayout } from '@hcu-test-monorepo/shared-ui';
 export function App() {
   return (
-    <div>
+    <GlobalLayout>
       <NxWelcome title="task-management" />
-    </div>
+    </GlobalLayout>
   );
 }
 
