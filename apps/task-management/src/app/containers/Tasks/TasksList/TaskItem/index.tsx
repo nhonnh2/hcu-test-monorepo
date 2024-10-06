@@ -6,9 +6,10 @@ import { TaskDetailType } from '@task-management/models/task.model';
 interface TaskItemProps {
   data: TaskDetailType;
   updateTask: (task: TaskDetailType) => void;
+  deleteTask: (id: string) => void;
 }
 
-const TaskItem = ({ data, updateTask }: TaskItemProps) => {
+const TaskItem = ({ data, updateTask, deleteTask }: TaskItemProps) => {
   const handleUpdateTask = () => {
     updateTask({
       ...data,
@@ -16,11 +17,15 @@ const TaskItem = ({ data, updateTask }: TaskItemProps) => {
     });
   };
 
+  const handleDeleteTask = () => {
+    deleteTask(data.id);
+  };
+
   return (
     <li className="flex justify-between items-center bg-white rounded shadow mb-2 p-2">
       <span>{data.name}</span>
       <div className="buttons">
-        <button className="text-gray-400 mr-1">
+        <button className="text-gray-400 mr-1" onClick={handleDeleteTask}>
           <DeleteIcon fontSize="small" />
         </button>
         <button onClick={handleUpdateTask}>

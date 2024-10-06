@@ -33,7 +33,7 @@ function useTasksServices() {
     taskApi
       .addTask(task)
       .then((res) => {
-        setTasks([...tasks, res.data]);
+        setTasks([res.data, ...tasks]);
       })
       .catch((err) => {
         console.error('addTask__error', err);
@@ -55,7 +55,14 @@ function useTasksServices() {
   };
 
   const deleteTask = (id: string) => {
-    return taskApi.deleteTask(id);
+    taskApi
+      .deleteTask(id)
+      .then((res) => {
+        setTasks(tasks.filter((task) => task.id !== id));
+      })
+      .catch((err) => {
+        console.error('deleteTask__error', err);
+      });
   };
 
   return { tasks, isLoading, addTask, updateTask, deleteTask };

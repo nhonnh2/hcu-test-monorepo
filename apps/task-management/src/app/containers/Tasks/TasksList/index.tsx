@@ -17,7 +17,7 @@ import { TaskDetailType } from '@task-management/models/task.model';
 //   },
 // ];
 const TasksList = () => {
-  const { tasks, addTask, updateTask } = useTasksServices();
+  const { tasks, addTask, updateTask, deleteTask } = useTasksServices();
 
   return (
     <>
@@ -25,7 +25,12 @@ const TasksList = () => {
       <div className="my_tasks_todo">
         <ul className="my_tasks_todo_list">
           {tasks.map((task) => (
-            <TaskItem key={task.id} data={task} updateTask={updateTask} />
+            <TaskItem
+              key={task.id}
+              data={task}
+              updateTask={updateTask}
+              deleteTask={deleteTask}
+            />
           ))}
         </ul>
       </div>
