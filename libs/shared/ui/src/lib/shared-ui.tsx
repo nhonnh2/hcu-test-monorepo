@@ -1,15 +1,5 @@
-import styled from 'tailwind';
-
-const StyledSharedUi = styled.div`
-  color: pink;
-`;
-
 export function SharedUi() {
-  return (
-    <StyledSharedUi>
-      <h1>Welcome to SharedUi!</h1>
-    </StyledSharedUi>
-  );
+  return <h1>Welcome to SharedUi!</h1>;
 }
 
 export default SharedUi;
