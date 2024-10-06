@@ -40,11 +40,25 @@ function useTasksServices() {
       });
   };
 
+  const updateTask = (task: TaskDetailType) => {
+    taskApi
+      .updateTask(task)
+      .then((res) => {
+        const taskIndex = tasks.findIndex((task) => task.id === res.data.id);
+        const newTasks = [...tasks];
+        newTasks[taskIndex] = res.data;
+        setTasks(newTasks);
+      })
+      .catch((err) => {
+        console.error('updateTask__error', err);
+      });
+  };
+
   const deleteTask = (id: string) => {
     return taskApi.deleteTask(id);
   };
 
-  return { tasks, isLoading, addTask, deleteTask };
+  return { tasks, isLoading, addTask, updateTask, deleteTask };
 }
 
 export default useTasksServices;

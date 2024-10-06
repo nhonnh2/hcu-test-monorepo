@@ -15,7 +15,7 @@ const AddTask = ({ addTask }: AddTaskProps) => {
       setError('Task name is required');
       return;
     }
-    addTask({ name: nameTask });
+    addTask({ name: nameTask, status: 'todo' });
   };
 
   const handleChangeTask = (e: React.ChangeEvent<HTMLInputElement>) => {

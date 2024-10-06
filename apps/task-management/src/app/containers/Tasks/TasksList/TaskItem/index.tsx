@@ -5,9 +5,17 @@ import { TaskDetailType } from '@task-management/models/task.model';
 
 interface TaskItemProps {
   data: TaskDetailType;
+  updateTask: (task: TaskDetailType) => void;
 }
 
-const TaskItem = ({ data }: TaskItemProps) => {
+const TaskItem = ({ data, updateTask }: TaskItemProps) => {
+  const handleUpdateTask = () => {
+    updateTask({
+      ...data,
+      status: data.status === 'todo' ? 'completed' : 'todo',
+    });
+  };
+
   return (
     <li className="flex justify-between items-center bg-white rounded shadow mb-2 p-2">
       <span>{data.name}</span>
@@ -15,7 +23,7 @@ const TaskItem = ({ data }: TaskItemProps) => {
         <button className="text-gray-400 mr-1">
           <DeleteIcon fontSize="small" />
         </button>
-        <button>
+        <button onClick={handleUpdateTask}>
           {data.status !== 'completed' ? (
             <CheckCircleOutlineIcon
               fontSize="small"
