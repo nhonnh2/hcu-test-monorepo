@@ -5,3 +5,7 @@ export type TaskDetailType = {
 };
 
 export type TaskBodyType = Omit<TaskDetailType, 'id'>;
+
+export type TaskParamsType = {
+  status: string;
+};

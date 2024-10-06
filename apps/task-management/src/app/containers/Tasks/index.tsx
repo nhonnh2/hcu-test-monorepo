@@ -23,10 +23,6 @@ const tasks: TaskDetailType[] = [
 ];
 
 const Tasks = (props: Props) => {
-  const addTask = () => {
-    // Logic để thêm task
-  };
-
   return (
     <div className="my_tasks_container">
       <div className="my_tasks_header">

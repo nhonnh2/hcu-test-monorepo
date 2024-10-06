@@ -1,20 +1,27 @@
 import { useEffect, useState } from 'react';
 
 import taskApi from '@task-management/apis/taskApi';
-import { TaskDetailType } from '@task-management/models/task.model';
+import {
+  TaskDetailType,
+  TaskParamsType,
+} from '@task-management/models/task.model';
 
-function useTasks() {
+type UseTasksProps = {
+  params?: TaskParamsType;
+};
+
+function useTasks({ params }: UseTasksProps) {
   const [tasks, setTasks] = useState<TaskDetailType[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
   useEffect(() => {
     getListTask();
-  }, []);
+  }, [params]);
 
   const getListTask = () => {
     setIsLoading(true);
     taskApi
-      .getListTask()
+      .getListTask(params)
       .then((res) => {
         setTasks(res.data);
       })
